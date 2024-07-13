@@ -1,4 +1,4 @@
 export default {
-  title: 'Next Marketing Site',
-  description: 'Starter template for marketing website with full SEO support',
+  title: 'Opps! This is a trap',
+  description: 'TRAPPPPPPPPP',
 } as const;
