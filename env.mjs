@@ -4,6 +4,8 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     SITE_URL: z.string(),
+    SECRET: z.string(),
+    ANSWER: z.string(),
   },
   client: {
     NEXT_PUBLIC_GA_ID: z.string().optional(),
