@@ -1,5 +1,6 @@
 "use server";
 import { env } from "@/env.mjs";
+import { toSlug } from "@/lib/utils";
 import { redirect } from "next/navigation";
 
 export type State = {
@@ -23,12 +24,14 @@ export async function checkSecret(prevState: State, formData: FormData) {
 
 export async function checkQuestion(prevState: State, formData: FormData) {
   const answer = formData.get("answer") as string;
-  if (answer && answer.toLowerCase() === env.ANSWER.toLowerCase()) {
+  if (answer && toSlug(answer) === toSlug(env.ANSWER)) {
     return {
       ...prevState,
       ok: true,
-      message: "Kaka, giỏi đấy!",
-    }
+      message: `Đống Đa là đáp án đúng!
+Giờ hãy đi tìm Đống Đa ở trong phòng
+(Câu này thằng Quang nghĩ)`,
+    };
   } else if (prevState.numOfTries === 4) {
     return {
       numOfTries: prevState.numOfTries + 1,
